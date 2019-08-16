@@ -14,12 +14,12 @@ const SmurfsAddForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(smurf);
+    console.log("Form Submission of Smurf:", smurf);
     //Add Post service
     axios
       .post(`http://localhost:3333/smurfs`, smurf)
-      .then(res => console.log(res))
-      .catch(err => console.log(err.response));
+      .then(res => console.log("Response from POST Request", res))
+      .catch(err => console.log("Error from POST Request", err.response));
     setSmurf({
       name: "",
       age: "",
