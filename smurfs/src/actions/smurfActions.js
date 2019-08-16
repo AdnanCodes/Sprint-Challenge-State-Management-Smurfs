@@ -11,10 +11,10 @@ export const getData = () => {
       .get(`http://localhost:3333/smurfs`)
       .then(res => {
         console.log(res);
-        dispatch({ type: FETCH_SMURFS_DATA_SUCCESS, payload: res });
+        dispatch({ type: FETCH_SMURFS_DATA_SUCCESS, payload: res.data });
       })
       .catch(err => {
-        dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err });
+        dispatch({ type: FETCH_SMURFS_DATA_FAILURE, payload: err.response });
       });
   };
 };
