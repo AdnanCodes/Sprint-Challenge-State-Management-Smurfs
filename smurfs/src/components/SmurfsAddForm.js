@@ -8,8 +8,16 @@ const SmurfsAddForm = () => {
     height: ""
   });
 
-  const handleChanges = e => {
-    setSmurf({ ...smurf, [e.target.name]: e.target.value });
+  const handleChangesName = e => {
+    setSmurf({ ...smurf, name: e.target.value });
+  };
+
+  const handleChangesAge = e => {
+    setSmurf({ ...smurf, age: parseInt(e.target.value) });
+  };
+
+  const handleChangesHeight = e => {
+    setSmurf({ ...smurf, height: e.target.value + "cm" });
   };
 
   const handleSubmit = e => {
@@ -22,7 +30,7 @@ const SmurfsAddForm = () => {
       .catch(err => console.log("Error from POST Request", err.response));
     setSmurf({
       name: "",
-      age: "",
+      age: 0,
       height: ""
     });
   };
@@ -33,21 +41,21 @@ const SmurfsAddForm = () => {
         value={smurf.name}
         name="name"
         placeholder="Name for Smurf"
-        onChange={handleChanges}
+        onChange={handleChangesName}
       />
       <input
-        type="text"
+        type="number"
         value={smurf.age}
         name="age"
         placeholder="Age for Smurf"
-        onChange={handleChanges}
+        onChange={handleChangesAge}
       />
       <input
         type="text"
         value={smurf.height}
         name="height"
         placeholder="Height for Smurf"
-        onChange={handleChanges}
+        onChange={handleChangesHeight}
       />
       <button>Add</button>
     </form>
